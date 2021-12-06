@@ -8,13 +8,14 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
+
+
 <div class="book-genre-form">
 
     <?php $form = ActiveForm::begin(); ?>
+    <?= $form->field($model, 'id_genre')->dropdownList($genres) ?>
+    <?= $form->field($model, 'id_book')->dropdownList($books) ?>
 
-    <?= $form->field($model, 'id_genre')->textInput() ?>
-
-    <?= $form->field($model, 'id_book')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

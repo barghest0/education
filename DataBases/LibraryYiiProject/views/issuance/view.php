@@ -30,8 +30,20 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'id_book',
-            'id_user',
+            // 'id_book',
+            [
+                'attribute'=>'id_book',
+                'value'=>function($model){
+                    return $model->book->name;
+                }
+            ],
+            // 'id_user',
+            [
+                'attribute'=>'id_user',
+                'value'=>function($model){
+                    return $model->user->firstname.' '.$model->user->lastname;
+                }
+            ],
             'start_date',
             'must_date',
             'finish_date',

@@ -47,12 +47,12 @@ class Issuance extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'id_book' => 'Id Book',
-            'id_user' => 'Id User',
-            'start_date' => 'Start Date',
-            'must_date' => 'Must Date',
-            'finish_date' => 'Finish Date',
+            // 'id' => 'ID',
+            'id_book' => 'Книга',
+            'id_user' => 'Пользователь',
+            'start_date' => 'Дата выдачи',
+            'must_date' => 'Дата сдачи',
+            'finish_date' => 'Дата фактической сдачи',
         ];
     }
 

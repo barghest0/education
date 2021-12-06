@@ -28,7 +28,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'name',
-            'id_publisher',
+            // 'id_publisher',
+            [
+                'attribute'=>'id_publisher',
+                'value'=>function($model){
+                    return $model->publisher->name;
+                }
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

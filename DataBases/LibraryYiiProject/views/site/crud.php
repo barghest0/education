@@ -11,7 +11,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     <a href="<?= yii\helpers\Url::toRoute('/book/index') ?>">Управление книгами</a><br>
     <a href="<?= yii\helpers\Url::toRoute('/genre/index') ?>">Управление жанрами</a><br>
-    <a href="<?= yii\helpers\Url::toRoute('/bookgenre/index') ?>">Управление книга-жанр</a><br>
+    <a href="<?= yii\helpers\Url::toRoute('/book-genre/index') ?>">Управление книга-жанр</a><br>
+    <a href="<?= yii\helpers\Url::toRoute('/publisher/index') ?>">Управление издательствами</a><br>
     <a href="<?= yii\helpers\Url::toRoute('/issuance/index') ?>">Управление выдачей</a><br>
     <a href="<?= yii\helpers\Url::toRoute('/user/index') ?>">Управление пользователями</a><br>
     

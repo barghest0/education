@@ -38,9 +38,12 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Пользователи', 'url' => ['/site/users']],
-            ['label' => 'Книги', 'url' => ['/site/books']],
-            ['label'=> 'CRUD', 'url'=>['/site/crud']]
+            ['label'=> 'Книги', 'url'=>['/book']],
+            ['label'=> 'Жанры', 'url'=>['/genre']],
+            ['label'=> 'Жанры-Книги', 'url'=>['/book-genre']],
+            ['label'=> 'Выдача', 'url'=>['/issuance']],
+            ['label'=> 'Издатели', 'url'=>['/publisher']],
+            ['label'=> 'Пользователи', 'url'=>['/user']],
         ],
     ]);
     NavBar::end();

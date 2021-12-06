@@ -44,9 +44,9 @@ class Book extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'name' => 'Name',
-            'id_publisher' => 'Id Publisher',
+            // 'id' => 'ID',
+            'name' => 'Название',
+            'id_publisher' => 'Издатель',
         ];
     }
 

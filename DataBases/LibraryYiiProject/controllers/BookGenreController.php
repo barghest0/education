@@ -4,6 +4,8 @@ namespace app\controllers;
 
 use Yii;
 use app\models\BookGenre;
+use app\models\Genre;
+use app\models\Book;
 use app\models\BookGenreSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -65,13 +67,16 @@ class BookGenreController extends Controller
     public function actionCreate()
     {
         $model = new BookGenre();
-
+        $genres = Genre::find()->all();
+        $books = Book::find()->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'genres' =>  $genres,
+            'books'=> $books
         ]);
     }
 

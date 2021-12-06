@@ -12,15 +12,15 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_book')->textInput() ?>
+    <?= $form->field($model, 'id_book')->dropdownList($books) ?>
 
-    <?= $form->field($model, 'id_user')->textInput() ?>
+    <?= $form->field($model, 'id_user')->dropdownList($users) ?>
 
-    <?= $form->field($model, 'start_date')->textInput() ?>
+    <?= $form->field($model, 'start_date')->input('date') ?>
 
-    <?= $form->field($model, 'must_date')->textInput() ?>
+    <?= $form->field($model, 'must_date')->input('date') ?>
 
-    <?= $form->field($model, 'finish_date')->textInput() ?>
+    <?= $form->field($model, 'finish_date')->input('date') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

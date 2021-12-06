@@ -42,10 +42,10 @@ class User extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'lastname' => 'Lastname',
-            'firstname' => 'Firstname',
-            'birthdate' => 'Birthdate',
+            // 'id' => 'ID',
+            'lastname' => 'Фамилия',
+            'firstname' => 'Имя',
+            'birthdate' => 'Дата рождения',
         ];
     }
 

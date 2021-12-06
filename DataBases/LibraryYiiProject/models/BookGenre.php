@@ -43,9 +43,9 @@ class BookGenre extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'id_genre' => 'Id Genre',
-            'id_book' => 'Id Book',
+            // 'id' => 'ID',
+            'id_genre' => 'Жанр',
+            'id_book' => 'Книга',
         ];
     }
 

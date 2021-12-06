@@ -5,10 +5,10 @@ namespace app\controllers;
 use Yii;
 use app\models\Book;
 use app\models\BookSearch;
+use app\models\Publisher;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
 /**
  * BookController implements the CRUD actions for Book model.
  */
@@ -65,13 +65,14 @@ class BookController extends Controller
     public function actionCreate()
     {
         $model = new Book();
-
+        $publishers = Publisher::find()->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'publishers'=>$publishers
         ]);
     }
 

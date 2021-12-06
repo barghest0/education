@@ -8,7 +8,8 @@ use app\models\IssuanceSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use app\models\User;
+use app\models\Book;
 /**
  * IssuanceController implements the CRUD actions for Issuance model.
  */
@@ -65,13 +66,17 @@ class IssuanceController extends Controller
     public function actionCreate()
     {
         $model = new Issuance();
-
+        $users = User::find()->all();
+        $books = Book::find()->all();
+        
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'users'=>$users,
+            'books' => $books
         ]);
     }
 

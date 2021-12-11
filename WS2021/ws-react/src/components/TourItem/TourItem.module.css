@@ -1,0 +1,10 @@
+.tour__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tour__image img {
+    width: 400px;
+    height: 300px;
+}

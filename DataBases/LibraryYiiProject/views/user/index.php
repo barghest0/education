@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Users';
+$this->title = 'Пользователи';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-index">
@@ -15,10 +15,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create User', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить пользователя', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('ДОЛЖНИКИ!!!', ['debt'], ['class' => 'btn btn-danger']) ?>
+
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); 
+    ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -29,9 +32,18 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'lastname',
             'firstname',
-            'birthdate',
+            // 'birthdate',
+            [
+                'attribute' => 'birthdate',
+                'value' => function ($model) {
+                    return $model->birthdate . " Возраст " . (date('Y') - date('Y', strtotime($model->birthdate)));
+                }
+            ],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view}'
+            ],
 
-            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 

@@ -17,7 +17,9 @@ class BookGenreSearch extends BookGenre
     public function rules()
     {
         return [
-            [['id', 'id_genre', 'id_book'], 'integer'],
+            [['id'], 'integer'],
+            [['id_genre', 'id_book'], 'string'],
+
         ];
     }
 
@@ -39,7 +41,7 @@ class BookGenreSearch extends BookGenre
      */
     public function search($params)
     {
-        $query = BookGenre::find();
+        $query = BookGenre::find()->joinWith('genre')->joinWith('book');
 
         // add conditions that should always apply here
 
@@ -58,9 +60,10 @@ class BookGenreSearch extends BookGenre
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'id_genre' => $this->id_genre,
-            'id_book' => $this->id_book,
         ]);
+
+        $query->andFilterWhere(['like', 'library_genre.name', $this->id_genre]);
+        $query->andFilterWhere(['like', 'library_book.name', $this->id_book]);
 
         return $dataProvider;
     }

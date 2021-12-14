@@ -17,6 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -32,16 +33,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             // 'id_book',
             [
-                'attribute'=>'id_book',
-                'value'=>function($model){
+                'attribute' => 'id_book',
+                'value' => function ($model) {
                     return $model->book->name;
                 }
             ],
             // 'id_user',
             [
-                'attribute'=>'id_user',
-                'value'=>function($model){
-                    return $model->user->firstname.' '.$model->user->lastname;
+                'attribute' => 'id_user',
+                'value' => function ($model) {
+                    return $model->user->firstname . ' ' . $model->user->lastname;
                 }
             ],
             'start_date',

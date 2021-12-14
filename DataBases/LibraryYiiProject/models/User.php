@@ -58,4 +58,5 @@ class User extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Issuance::className(), ['id_user' => 'id']);
     }
+
 }

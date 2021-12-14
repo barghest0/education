@@ -9,6 +9,7 @@ use app\models\Publisher;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 /**
  * BookController implements the CRUD actions for Book model.
  */
@@ -37,7 +38,6 @@ class BookController extends Controller
     {
         $searchModel = new BookSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -52,6 +52,11 @@ class BookController extends Controller
      */
     public function actionView($id)
     {
+        // $book= Book::find()
+        // ->with('BookGenre')    
+        // ->all();
+
+        // var_dump($book);
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);

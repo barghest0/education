@@ -7,19 +7,18 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\IssuanceSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Выдача';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = "Выдачи для пользователя". $searchModel->id_user;
+$this->params['breadcrumbs'][] = $this->title ;
 ?>
 <div class="issuance-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Добавить выдачу', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Issuance', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); 
-    ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -30,16 +29,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             // 'id_book',
             [
-                'attribute' => 'id_book',
-                'value' => function ($model) {
+                'attribute'=>'id_book',
+                'value'=>function($model){
                     return $model->book->name;
                 }
             ],
             // 'id_user',
             [
-                'attribute' => 'id_user',
-                'value' => function ($model) {
-                    return $model->user->firstname . ' ' . $model->user->lastname;
+                'attribute'=>'id_user',
+                'value'=>function($model){
+                    return $model->user->firstname.' '.$model->user->lastname;
                 }
             ],
             'start_date',

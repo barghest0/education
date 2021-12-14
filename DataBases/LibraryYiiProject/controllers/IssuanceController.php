@@ -10,6 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\User;
 use app\models\Book;
+
 /**
  * IssuanceController implements the CRUD actions for Issuance model.
  */
@@ -45,6 +46,18 @@ class IssuanceController extends Controller
         ]);
     }
 
+    public function actionForUser()
+    {
+
+        $searchModel = new IssuanceSearch();
+        $dataProvider = $searchModel->searchForUser(Yii::$app->request->queryParams);
+
+        return $this->render('for-user', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
     /**
      * Displays a single Issuance model.
      * @param integer $id
@@ -68,14 +81,14 @@ class IssuanceController extends Controller
         $model = new Issuance();
         $users = User::find()->all();
         $books = Book::find()->all();
-        
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
-            'users'=>$users,
+            'users' => $users,
             'books' => $books
         ]);
     }
@@ -90,6 +103,8 @@ class IssuanceController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $books = Book::find()->all();
+        $users = User::find()->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -97,6 +112,8 @@ class IssuanceController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'books' => $books,
+            'users' => $users
         ]);
     }
 

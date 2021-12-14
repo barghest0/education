@@ -44,6 +44,17 @@ class UserController extends Controller
         ]);
     }
 
+    public function actionDebt()
+    {
+        $searchModel = new UserSearch();
+        $dataProvider = $searchModel->searchDebt(Yii::$app->request->queryParams);
+        // \print_r($dataProvider);
+        return $this->render('debt', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
     /**
      * Displays a single User model.
      * @param integer $id
